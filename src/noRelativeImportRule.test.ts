@@ -116,12 +116,12 @@ test('works with multiple imports', () => {
     }
   });
 
-  /* expect(result.errorCount).toBe(1);
+  expect(result.errorCount).toBe(1);
 
   expect(result.failures).toContainEqual(
     expect.objectContaining({
       ruleName: "no-relative-import",
       failure: expect.stringContaining("relative-import/a")
     })
-  ); */
+  );
 });
