@@ -4,6 +4,7 @@
   "description": "TSLint rules for Lerna repos",
   "main": "lib/",
   "scripts": {
+    "build": "tsc",
     "test": "jest"
   },
   "keywords": [
