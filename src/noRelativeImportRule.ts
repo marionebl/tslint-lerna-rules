@@ -19,22 +19,24 @@ function walk(ctx: Lint.WalkContext<string[]>) {
     const target = (resolveFrom as any).silent(fileBase, name.text);
 
     if (target === null) {
-      return;
+      continue;
     }
 
     const isAbsolute = !name.text.startsWith('.') && !name.text.startsWith('/');
 
     if (isAbsolute) {
-      return;
+      continue;
     }
 
-    if (!isSubDirectory(target, base)) {
-      ctx.addFailure(
-        name.getStart(ctx.sourceFile) + 1,
-        name.end - 1,
-        `Imports reaching out of of package root "${base}" are forbidden`
-      );
+    if (isSubDirectory(target, base)) {
+      continue;
     }
+
+    ctx.addFailure(
+      name.getStart(ctx.sourceFile) + 1,
+      name.end - 1,
+      `Imports reaching out of of package root "${base}" are forbidden`
+    );
   }
 }
 

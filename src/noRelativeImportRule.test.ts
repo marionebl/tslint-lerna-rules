@@ -101,3 +101,27 @@ test('works with "."', () => {
 
   expect(result.errorCount).toBe(0);
 });
+
+test('works with multiple imports', () => {
+  const ctx = Path.join(__dirname, "..", "fixtures", "relative-import");
+
+  const result = Test.runRule({
+    ruleName: "no-relative-import",
+    file: {
+      path: `${ctx}/a/a.ts`,
+      contents: `
+        import * as Thing from ".";
+        import * as B from "../b";
+      `
+    }
+  });
+
+  /* expect(result.errorCount).toBe(1);
+
+  expect(result.failures).toContainEqual(
+    expect.objectContaining({
+      ruleName: "no-relative-import",
+      failure: expect.stringContaining("relative-import/a")
+    })
+  ); */
+});
