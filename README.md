@@ -6,7 +6,7 @@
 ## Getting started
 
 ```sh
-npm install --save- tslint-lerna-rules
+npm install --save-dev tslint-lerna-rules
 ```
 
 
