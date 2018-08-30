@@ -12,7 +12,7 @@ export class Rule extends Lint.Rules.AbstractRule {
 }
 
 function walk(ctx: Lint.WalkContext<string[]>) {
-  const fileBase = Path.dirname(ctx.sourceFile.fileName);
+  const fileBase = Path.resolve(Path.dirname(ctx.sourceFile.fileName));
   const base = findPackageBase(fileBase);
 
   for (const name of findImports(ctx.sourceFile, ImportKind.All)) {
