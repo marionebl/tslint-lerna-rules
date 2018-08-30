@@ -80,8 +80,6 @@ export module Test {
             formattersDirectory: FORMATTER_DIRECTORY
         };
 
-        let result: Lint.LintResult;
-
         if (opts.useTypeChecker) {
             const defaultHost = ts.createCompilerHost({});
 
