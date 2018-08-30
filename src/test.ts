@@ -83,7 +83,20 @@ export module Test {
         let result: Lint.LintResult;
 
         if (opts.useTypeChecker) {
-            program = ts.createProgram([opts.file.contents], { });
+            const defaultHost = ts.createCompilerHost({});
+
+            program = ts.createProgram([opts.file.path], {}, {
+              ...defaultHost,
+              getSourceFile(...args): ts.SourceFile {
+                const [path, version] = args;
+
+                if (path === opts.file.path) {
+                  return ts.createSourceFile(opts.file.path, opts.file.contents, version)
+                }
+
+                return defaultHost.getSourceFile(...args);
+              },
+            });
         }
 
         const linter = new Lint.Linter(options, opts.useTypeChecker ? program : undefined);
