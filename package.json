@@ -1,6 +1,6 @@
 {
   "name": "tslint-lerna-rules",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "TSLint rules for Lerna repos",
   "main": "lib/",
   "scripts": {
